@@ -94,7 +94,7 @@ a {color:#0a8080;}
   font-size:0.95rem;
 }
 
-/* ==== IMAGE EXAMPLES ==== */
+/* ==== EXAMPLE IMAGE ==== */
 .example {
   text-align:center;
   margin:1.8rem 0;
@@ -111,31 +111,6 @@ a {color:#0a8080;}
   color:#555;
   margin-top:0.4rem;
   font-style:italic;
-}
-
-/* ==== BEFORE/AFTER ==== */
-.before-after {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:20px;
-  margin:1.5rem 0;
-}
-.before-after figure {
-  flex:1;
-  text-align:center;
-}
-.before-after img {
-  width:100%;
-  height:auto;
-  border:2px solid #00b0b0;
-  border-radius:8px;
-  box-shadow:0 0 12px rgba(234,55,163,0.1);
-}
-.before-after figcaption {
-  font-size:0.85rem;
-  color:#555;
-  margin-top:0.3rem;
 }
 
 /* ==== VIDEO SECTION ==== */
@@ -221,7 +196,6 @@ footer {
 /* ==== RESPONSIVE ==== */
 @media(max-width:700px){
   .container{padding:1.5rem;}
-  .before-after{flex-direction:column;}
 }
 </style>
 </head>
@@ -247,17 +221,17 @@ footer {
     <img src="images/sketch-scan-vs-photo.jpg"
          alt="Comparison of scan and photograph of the same sketchbook page"
          class="example-direct-image">
-    <div class="banner-caption">Scan (left) — crisp detail · Photo (right) — texture and depth.</div>
+    <div class="banner-caption">Scan (left) — crisp detail · Photo (right) — texture and depth.</div>
   </div>
-  <div class="tip">💡 <strong>Best results:</strong> combine both approaches — scan for clarity + photograph for texture.</div>
+  <div class="tip">💡 <strong>Best results:</strong> combine both approaches — scan for clarity + photograph for texture.</div>
 
   <!-- STEP 2 -->
   <h2 id="duplicate">2️⃣ Open and Duplicate Layers</h2>
   <div class="box">
     <ul>
-      <li>Open your image in Photoshop.</li>
-      <li>Drag the Background layer onto the <strong>New Layer</strong> icon.</li>
-      <li>This keeps a safe original beneath your edits.</li>
+      <li>Open your image in Photoshop.</li>
+      <li>Drag the Background layer onto the <strong>New Layer</strong> icon.</li>
+      <li>This keeps a safe original beneath your edits.</li>
     </ul>
   </div>
 
@@ -266,37 +240,35 @@ footer {
   <div class="box">
     <ul>
       <li>Choose <strong>Filter → Camera Raw Filter…</strong></li>
-      <li>Set White Balance = Custom.</li>
+      <li>Set White Balance = Custom.</li>
       <li>Adjust with:
         <ul>
           <li><strong>Temperature:</strong> left = cool | right = warm</li>
           <li><strong>Tint:</strong> left = green | right = magenta</li>
         </ul>
       </li>
-      <li>Aim for clean white paper — not over‑bright white.</li>
+      <li>Aim for clean white paper — not over‑bright white.</li>
     </ul>
   </div>
 
-  <!-- Step 3 video -->
+  <!-- Step 3 video -->
   <div class="video-container">
     <iframe src="videos/camera-raw-video.mp4"
-            title="Video — Adjusting Light and Colour in Camera Raw Filter"
+            title="Video — Adjusting Light and Colour in Camera Raw Filter"
             allowfullscreen></iframe>
   </div>
 
   <div class="tip">🪄 Keep it simple: Temperature + Tint give natural colour balance — no eyedropper needed.</div>
-  <div class="before-after">
-    <figure>
-      <img src="images/sketch-before.jpg" alt="Before — original photo scan">
-      <figcaption>Before — uneven lighting</figcaption>
-    </figure>
-    <figure>
-      <img src="images/sketch-after.jpg" alt="After — edited scan">
-      <figcaption>After — balanced tone & colour</figcaption>
-    </figure>
+
+  <!-- Combined before-after image -->
+  <div class="example">
+    <img src="images/sketch-before-after.jpg"
+         alt="Side‑by‑side comparison of before and after Photoshop correction"
+         class="example-direct-image">
+    <div class="banner-caption">Before (left) → After (right) · balanced tone & colour.</div>
   </div>
 
-  <!-- STEP 4 -->
+  <!-- STEP 4 -->
   <h2 id="layout">4️⃣ Place into A3 Layout</h2>
   <div class="box">
     <ul>
@@ -307,19 +279,19 @@ footer {
   </div>
   <div class="tip">🧩 No need to crop — keep the page whole and frame it later.</div>
 
-  <!-- Step 4 video -->
+  <!-- Step 4 video -->
   <div class="video-container">
     <iframe src="videos/layout-video.mp4"
-            title="Video — Placing pages into A3 Layout"
+            title="Video — Placing pages into A3 Layout"
             allowfullscreen></iframe>
   </div>
 
-  <!-- STEP 5 -->
+  <!-- STEP 5 -->
   <h2 id="save">5️⃣ Save Clearly</h2>
   <div class="box">
     <ul>
       <li>File → Export → <strong>Save for Web (Legacy)</strong></li>
-      <li>Select JPEG High Quality (80–90%) for Moodle/Padlet.</li>
+      <li>Select JPEG High Quality (80–90%) for Moodle or Padlet.</li>
       <li>Rename <em>firstname_sketchbook_edit.jpg</em>.</li>
       <li>Keep under 2 MB for upload.</li>
     </ul>
@@ -343,12 +315,12 @@ footer {
 <script>
 // ==== QUIZ GAME ====
 const quizData=[
- {q:"Which method gives more even lighting?",opts:["Scanning","Photographing","Drawing","Tracing"],correct:0},
- {q:"Where is the Camera Raw Filter found?",opts:["Image → Adjustments","Filter → Camera Raw Filter…","View → Extras","Window → Layers"],correct:1},
- {q:"Which sliders adjust paper colour?",opts:["Exposure & Contrast","Temperature & Tint","Hue & Saturation","Shadows & Blacks"],correct:1},
- {q:"What is the shortcut for Free Transform?",opts:["Ctrl/Cmd + E","Ctrl/Cmd + J","Ctrl/Cmd + T","Ctrl/Cmd + G"],correct:2},
- {q:"Which file format keeps layers editable?",opts:["JPG","PNG","PSD","GIF"],correct:2},
- {q:"What print resolution should you scan at?",opts:["72 dpi","150 dpi","300 dpi","600 dpi"],correct:2}
+ {q:"Which method gives more even lighting?",opts:["Scanning","Photographing","Drawing","Tracing"],correct:0},
+ {q:"Where is the Camera Raw Filter found?",opts:["Image → Adjustments","Filter → Camera Raw Filter…","View → Extras","Window → Layers"],correct:1},
+ {q:"Which sliders adjust paper colour?",opts:["Exposure & Contrast","Temperature & Tint","Hue & Saturation","Shadows & Blacks"],correct:1},
+ {q:"What is the shortcut for Free Transform?",opts:["Ctrl/Cmd + E","Ctrl/Cmd + J","Ctrl/Cmd + T","Ctrl/Cmd + G"],correct:2},
+ {q:"Which file format keeps layers editable?",opts:["JPG","PNG","PSD","GIF"],correct:2},
+ {q:"What print resolution should you scan at?",opts:["72 dpi","150 dpi","300 dpi","600 dpi"],correct:2}
 ];
 let current=0,score=0;
 function loadQuestion(){
@@ -369,9 +341,9 @@ function showResult(){
  const total=quizData.length;
  const percent=Math.round((score/total)*100);
  let feedback="";
- if(percent>=80)feedback="🌟 Excellent — great eye for colour and workflow!";
- else if(percent>=50)feedback="👍 Good job — review the unclear steps once more.";
- else feedback="💭 Keep practising these Photoshop steps and try again.";
+ if(percent>=80)feedback="🌟 Excellent — great eye for colour and workflow!";
+ else if(percent>=50)feedback="👍 Good job — review the unclear steps once more.";
+ else feedback="💭 Keep practising these Photoshop steps and try again.";
  document.getElementById("game").innerHTML="";
  document.getElementById("result").innerHTML=`You scored <strong>${score}</strong>/<strong>${total}</strong> (${percent}%)<br>${feedback}`;
 }
