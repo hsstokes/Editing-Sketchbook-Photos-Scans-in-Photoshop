@@ -65,7 +65,7 @@ h2 {
 p,li {
   line-height:1.6;
   font-size:1rem;
-  word-break:break-word;     /* ✅  wrap long menu paths */
+  word-break:break-word;
 }
 ul {margin-left:1.3rem;}
 a {color:#0a8080;}
@@ -77,9 +77,9 @@ a {color:#0a8080;}
   padding:1rem 1.25rem;
   background:#f9ffff;
   margin-top:0.8rem;
-  overflow-wrap:anywhere;     /* ✅  allow internal line wrapping */
+  overflow-wrap:anywhere;
 }
-.box ul ul {margin-left:1rem;} /* ✅  nested lists smaller indent */
+.box ul ul {margin-left:1rem;}
 .tip {
   border-left:4px solid #ea37a3;
   background:#fff5fb;
@@ -243,13 +243,13 @@ footer {
   <div class="box">
     <ul>
       <li>Go to <strong>Image → Adjustments → Levels ( Ctrl/Cmd + L )</strong>.</li>
-      <li>Move black and white triangle sliders until the histogram touches both ends — adds contrast and true white.</li>
+      <li>Adjust black and white input sliders until the histogram touches both ends — adds contrast and true white.</li>
       <li>Then use <strong>Image → Adjustments → Curves ( Ctrl/Cmd + M )</strong>.</li>
-      <li>Make a gentle “S” curve for subtle contrast — raise lights and anchor dark tones.</li>
-      <li>Keep paper white natural (not burnt out) and shadows soft.</li>
+      <li>Make a gentle “S” curve for subtle contrast — lift lights and anchor dark tones.</li>
+      <li>Maintain natural paper texture (no burnout or crushed shadows).</li>
     </ul>
   </div>
-  <div class="tip">🎨 Levels recover brightness, Curves refine contrast — best to apply before colour balancing.</div>
+  <div class="tip">🎨 Levels recover brightness, Curves refine contrast — apply before colour balancing.</div>
 
   <!-- STEP 4 -->
   <h2 id="adjust">4️⃣ Adjust Light & Colour — Camera Raw Filter</h2>
@@ -262,11 +262,14 @@ footer {
     </ul>
   </div>
 
+  <!-- ✅ Embedded Panopto video instead of local MP4 -->
   <div class="video-container">
-    <iframe src="videos/camera-raw-video.mp4" title="Video — Adjusting Light and Colour in Camera Raw Filter" allowfullscreen></iframe>
+    <iframe src="https://ual.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=a5b2563e-f3a3-42d0-a3e2-b3810108960a"
+            title="Panopto Video — Adjusting Light and Colour in Camera Raw Filter"
+            allowfullscreen></iframe>
   </div>
 
-  <div class="tip">🪄 Keep it simple: Temperature + Tint give natural colour balance — no eyedropper needed.</div>
+  <div class="tip">🪄 Temperature + Tint controls create a natural colour balance — no eyedropper needed.</div>
 
   <div class="example">
     <img src="images/sketch-before-after.jpg" class="example-direct-image"
@@ -283,10 +286,14 @@ footer {
       <li>Resize with <kbd>Ctrl/Cmd + T</kbd> (Free Transform).</li>
     </ul>
   </div>
+
   <div class="tip">🧩 No need to crop — keep the page whole and frame it later.</div>
 
+  <!-- ✅ Placeholder for future Panopto layout link -->
   <div class="video-container">
-    <iframe src="videos/layout-video.mp4" title="Video — Placing pages into A3 Layout" allowfullscreen></iframe>
+    <iframe src="" 
+            title="Optional Panopto Video — A3 Layout and Export (Optional)"
+            allowfullscreen></iframe>
   </div>
 
   <!-- STEP 6 -->
