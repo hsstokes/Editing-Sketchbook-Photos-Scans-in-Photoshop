@@ -100,6 +100,25 @@ a {color:#0a8080;}
 }
 
 /* ==== EXAMPLE IMAGE SECTION ==== */
+.example {
+  text-align:center;
+  margin:1.8rem 0;
+}
+.example-direct-image {
+  max-width:100%;
+  height:auto;
+  border:3px solid #00b0b0;
+  border-radius:8px;
+  box-shadow:0 0 15px rgba(234,55,163,0.1);
+}
+.banner-caption {
+  font-size:0.9rem;
+  color:#555;
+  margin-top:0.4rem;
+  font-style:italic;
+}
+
+/* ==== BEFORE/AFTER SECTION ==== */
 .before-after {
   display:flex;
   justify-content:space-between;
@@ -123,20 +142,8 @@ a {color:#0a8080;}
   color:#555;
   margin-top:0.3rem;
 }
-.fallback-demo {
-  display:none;
-  justify-content:center;
-  align-items:center;
-  gap:20px;
-  border:1.5px solid #00b0b0;
-  border-radius:8px;
-  padding:1rem;
-  background:#f9ffff;
-  font-size:0.9rem;
-  color:#0a8080;
-}
 
-/* ==== VIDEO ==== */
+/* ==== VIDEO SECTION ==== */
 .video-container {
   margin-top:1rem;
   margin-bottom:1rem;
@@ -157,7 +164,7 @@ a {color:#0a8080;}
   border:0;
 }
 
-/* ==== QUIZ (GAME) SECTION ==== */
+/* ==== QUIZ (GAME) ==== */
 .quiz-section {
   margin-top:2.5rem;
   padding:1.5rem;
@@ -236,112 +243,86 @@ footer {
 </nav>
 
 <div class="container">
-
   <h1>Editing Photos & Scans of Physical Work in Photoshop 🖼️</h1>
 
-  <h2 id="capture">1️⃣ Capture Your Sketchbook Work</h2>
-  <p>You can record physical pages two ways — both have benefits.</p>
+  <!-- STEP 1 -->
+  <h2 id="capture">1️⃣ Capture Your Sketchbook Work</h2>
+  <p>You can record physical pages two ways — both have benefits. Below shows a scanned and a photographed version of the same page.</p>
 
-  <div class="box">
-    <h3>✨ Option A — Scan at College</h3>
-    <ul>
-      <li>Use the college printers/scanners — place your page flat on the glass and close the lid gently.</li>
-      <li>Swipe your student card and choose <strong>Scan to Email</strong>.</li>
-      <li>Set resolution to <strong>300 dpi</strong> for sharp detail.</li>
-      <li>Watch for washed‑out paper; pencil may scan faintly.</li>
-    </ul>
-  </div>
-
-  <div class="box">
-    <h3>📸 Option B — Photograph Your Pages</h3>
-    <ul>
-      <li>Use soft daylight (not direct sunlight).</li>
-      <li>Lay flat; stand or mount your phone above the page.</li>
-      <li>Take several shots and pick the most evenly lit one.</li>
-    </ul>
+  <div class="example">
+    <img src="images/sketch-scan-vs-photo.jpg"
+         alt="Comparison of scan and photograph of the same sketchbook page"
+         class="example-direct-image">
+    <div class="banner-caption">Scan (left) — crisp detail · Photo (right) — texture and depth.</div>
   </div>
 
   <div class="tip">💡 <strong>Best results:</strong> combine both approaches — scan for clarity + photograph for texture.</div>
 
-  <!-- VIDEO DEMO PLACEHOLDER -->
-  <div class="video-container">
-    <iframe src="" title="Video demo — Capturing pages" allowfullscreen></iframe>
-  </div>
-
-  <h2 id="duplicate">2️⃣ Open & Duplicate Layers</h2>
+  <!-- STEP 2 -->
+  <h2 id="duplicate">2️⃣ Open and Duplicate Layers</h2>
   <div class="box">
     <ul>
       <li>Open your image in Photoshop.</li>
-      <li>Drag the Background layer onto the <strong>New Layer</strong> icon.</li>
-      <li>This keeps a safe original beneath.</li>
+      <li>Drag the Background layer onto the <strong>New Layer</strong> icon.</li>
+      <li>This keeps a safe original beneath your edits.</li>
     </ul>
   </div>
 
-  <h2 id="adjust">3️⃣ Adjust Light & Colour — Camera Raw Filter</h2>
+  <!-- STEP 3 -->
+  <h2 id="adjust">3️⃣ Adjust Light & Colour — Camera Raw Filter</h2>
   <div class="box">
     <ul>
-      <li>Filter → <strong>Camera Raw Filter…</strong></li>
+      <li>Choose <strong>Filter → Camera Raw Filter…</strong></li>
       <li>Set White Balance = Custom.</li>
-      <li>Use sliders:
+      <li>Adjust with:
         <ul>
-          <li><strong>Temperature:</strong> left = cool, right = warm</li>
-          <li><strong>Tint:</strong> left = green, right = magenta</li>
+          <li><strong>Temperature:</strong> left = cool | right = warm</li>
+          <li><strong>Tint:</strong> left = green | right = magenta</li>
         </ul>
       </li>
-      <li>Aim for clean white paper, not pure white.</li>
+      <li>Aim for clean white paper — not over‑bright white.</li>
     </ul>
   </div>
 
-  <div class="tip">🪄 Keep it simple: Temperature + Tint give natural balance — no eyedropper needed.</div>
+  <div class="tip">🪄 Keep it simple: Temperature + Tint give natural colour balance — no eyedropper needed.</div>
 
   <div class="before-after">
     <figure>
-      <img src="images/sketch-before.jpg" alt="Original unedited sketch photo" onerror="this.style.display='none';document.getElementById('fallback1').style.display='flex';">
+      <img src="images/sketch-before.jpg" alt="Before — original photo scan">
       <figcaption>Before — uneven lighting</figcaption>
     </figure>
     <figure>
-      <img src="images/sketch-after.jpg" alt="Edited sketch with Camera Raw filter" onerror="this.style.display='none';document.getElementById('fallback1').style.display='flex';">
-      <figcaption>After — balanced tone & colour</figcaption>
+      <img src="images/sketch-after.jpg" alt="After — edited scan">
+      <figcaption>After — balanced tone & colour</figcaption>
     </figure>
   </div>
-  <div id="fallback1" class="fallback-demo">
-    📷 Add before/after examples here.
-  </div>
 
-  <div class="video-container">
-    <iframe src="" title="Video demo — Adjusting colour in Camera Raw" allowfullscreen></iframe>
-  </div>
-
-  <h2 id="layout">4️⃣ Place into A3 Layout</h2>
+  <!-- STEP 4 -->
+  <h2 id="layout">4️⃣ Place into A3 Layout</h2>
   <div class="box">
     <ul>
-      <li>Select with <strong>Marquee Tool (M)</strong> → <kbd>Ctrl/Cmd + C</kbd> / <kbd>Ctrl/Cmd + V</kbd>.</li>
-      <li>Or File → <strong>Place Embedded…</strong> to insert your full page.</li>
-      <li>Resize via <kbd>Ctrl/Cmd + T</kbd> (Free Transform).</li>
+      <li>Select with <strong>Marquee Tool (M)</strong> → <kbd>Ctrl/Cmd + C</kbd> / <kbd>Ctrl/Cmd + V</kbd></li>
+      <li>Or File → <strong>Place Embedded…</strong> to insert a full page layer.</li>
+      <li>Resize with <kbd>Ctrl/Cmd + T</kbd> (Free Transform).</li>
     </ul>
   </div>
-
   <div class="tip">🧩 No need to crop — keep the page whole and frame it later.</div>
 
-  <div class="video-container">
-    <iframe src="" title="Video demo — Placing in A3 layout" allowfullscreen></iframe>
-  </div>
-
+  <!-- STEP 5 -->
   <h2 id="save">5️⃣ Save Clearly</h2>
   <div class="box">
     <ul>
       <li>File → Export → <strong>Save for Web (Legacy)</strong></li>
-      <li>Choose JPEG High Quality (80–90%) for Moodle / Padlet.</li>
-      <li>Name file <em>firstname_sketchbook_edit.jpg</em>.</li>
-      <li>Keep under 2 MB.</li>
+      <li>Select JPEG High Quality (80–90%) for Moodle/Padlet.</li>
+      <li>Rename <em>firstname_sketchbook_edit.jpg</em>.</li>
+      <li>Keep under 2 MB for upload.</li>
     </ul>
   </div>
-
-  <div class="note">💾 Tip: Save a layered PSD copy for future editing.</div>
+  <div class="note">💾 Tip: Save a layered PSD copy so you can re‑edit later.</div>
 
   <!-- QUIZ GAME -->
   <div id="quiz" class="quiz-section">
-    <h2 id="quiz" class="quiz-title">🎮 Knowledge Check — Editing Photos & Scans</h2>
+    <h2 class="quiz-title">🎮 Knowledge Check — Editing Photos & Scans</h2>
     <div id="game"></div>
     <div id="result"></div>
   </div>
@@ -349,22 +330,21 @@ footer {
   <footer>
     💡 UAL Digital Studies · Photoshop Guide – Editing Physical & Scanned Work<br>
     Scan · Photograph · Refine · Present<br><br>
-    📸 <a href="https://moodle.arts.ac.uk/" target="_blank">Return to Moodle / Padlet Upload</a>
+    📸 <a href="https://moodle.arts.ac.uk/" target="_blank">Return to Moodle / Padlet Upload</a>
   </footer>
 </div>
 
 <script>
 // ==== QUIZ GAME SCRIPT ====
 const quizData = [
-  {q:"Which capture method provides more consistent lighting?",opts:["Scanning","Photographing","Tracing","Drawing"],correct:0},
-  {q:"Where do you find the Camera Raw Filter?",opts:["Image → Adjustments","Filter → Camera Raw Filter…","View → Extras","Window → Layers"],correct:1},
-  {q:"Which two sliders correct paper colour?",opts:["Exposure & Contrast","Temperature & Tint","Hue & Saturation","Shadows & Blacks"],correct:1},
-  {q:"What key command resizes a placed image?",opts:["Ctrl/Cmd + E","Ctrl/Cmd + J","Ctrl/Cmd + T","Ctrl/Cmd + G"],correct:2},
-  {q:"Which file format keeps editable layers?",opts:["JPG","PNG","PSD","GIF"],correct:2},
-  {q:"What resolution is ideal for scanning sketchbook pages?",opts:["72 dpi","150 dpi","300 dpi","600 dpi"],correct:2}
+  {q:"Which method gives more even lighting?",opts:["Scanning","Photographing","Drawing","Tracing"],correct:0},
+  {q:"Where is the Camera Raw Filter found?",opts:["Image → Adjustments","Filter → Camera Raw Filter…","View → Extras","Window → Layers"],correct:1},
+  {q:"Which sliders adjust paper colour?",opts:["Exposure & Contrast","Temperature & Tint","Hue & Saturation","Shadows & Blacks"],correct:1},
+  {q:"What is the shortcut for Free Transform?",opts:["Ctrl/Cmd + E","Ctrl/Cmd + J","Ctrl/Cmd + T","Ctrl/Cmd + G"],correct:2},
+  {q:"Which file format keeps layers editable?",opts:["JPG","PNG","PSD","GIF"],correct:2},
+  {q:"What print resolution should you scan at?",opts:["72 dpi","150 dpi","300 dpi","600 dpi"],correct:2}
 ];
 let current=0,score=0;
-
 function loadQuestion(){
   const q=quizData[current];
   document.getElementById("game").innerHTML=`
@@ -384,10 +364,10 @@ function showResult(){
   const percent=Math.round((score/total)*100);
   let feedback="";
   if(percent>=80)feedback="🌟 Excellent — great eye for colour and workflow!";
-  else if(percent>=50)feedback="👍 Good job — review any unclear steps.";
-  else feedback="💭 Keep practising each tool and re‑try soon.";
+  else if(percent>=50)feedback="👍 Good job — review the unclear steps once more.";
+  else feedback="💭 Keep practising these Photoshop steps and try again.";
   document.getElementById("game").innerHTML="";
-  document.getElementById("result").innerHTML=`You scored <strong>${score}</strong>/<strong>${total}</strong> (${percent}%)<br>${feedback}`;
+  document.getElementById("result").innerHTML=`You scored <strong>${score}</strong>/<strong>${total}</strong> (${percent}%)<br>${feedback}`;
 }
 loadQuestion();
 </script>
