@@ -65,6 +65,7 @@ h2 {
 p,li {
   line-height:1.6;
   font-size:1rem;
+  word-break:break-word;     /* ✅  wrap long menu paths */
 }
 ul {margin-left:1.3rem;}
 a {color:#0a8080;}
@@ -76,7 +77,9 @@ a {color:#0a8080;}
   padding:1rem 1.25rem;
   background:#f9ffff;
   margin-top:0.8rem;
+  overflow-wrap:anywhere;     /* ✅  allow internal line wrapping */
 }
+.box ul ul {margin-left:1rem;} /* ✅  nested lists smaller indent */
 .tip {
   border-left:4px solid #ea37a3;
   background:#fff5fb;
@@ -94,7 +97,7 @@ a {color:#0a8080;}
   font-size:0.95rem;
 }
 
-/* ==== EXAMPLE IMAGE ==== */
+/* ==== IMAGE EXAMPLE ==== */
 .example {
   text-align:center;
   margin:1.8rem 0;
@@ -113,7 +116,7 @@ a {color:#0a8080;}
   font-style:italic;
 }
 
-/* ==== VIDEO SECTION ==== */
+/* ==== VIDEO ==== */
 .video-container {
   margin-top:1rem;
   margin-bottom:1rem;
@@ -205,6 +208,7 @@ footer {
 <nav class="mini-nav">
   <a href="#capture">Capture</a>
   <a href="#duplicate">Duplicate</a>
+  <a href="#levels">Levels & Curves</a>
   <a href="#adjust">Adjust</a>
   <a href="#layout">Layout</a>
   <a href="#save">Save</a>
@@ -218,9 +222,8 @@ footer {
   <h2 id="capture">1️⃣ Capture Your Sketchbook Work</h2>
   <p>You can record physical pages two ways — both have benefits. Below shows a scanned and a photographed version of the same page.</p>
   <div class="example">
-    <img src="images/sketch-scan-vs-photo.jpg"
-         alt="Comparison of scan and photograph of the same sketchbook page"
-         class="example-direct-image">
+    <img src="images/sketch-scan-vs-photo.jpg" class="example-direct-image"
+         alt="Comparison of scan and photograph of the same sketchbook page">
     <div class="banner-caption">Scan (left) — crisp detail · Photo (right) — texture and depth.</div>
   </div>
   <div class="tip">💡 <strong>Best results:</strong> combine both approaches — scan for clarity + photograph for texture.</div>
@@ -236,40 +239,43 @@ footer {
   </div>
 
   <!-- STEP 3 -->
-  <h2 id="adjust">3️⃣ Adjust Light & Colour — Camera Raw Filter</h2>
+  <h2 id="levels">3️⃣ Balance Tone with Levels & Curves</h2>
+  <div class="box">
+    <ul>
+      <li>Go to <strong>Image → Adjustments → Levels ( Ctrl/Cmd + L )</strong>.</li>
+      <li>Move black and white triangle sliders until the histogram touches both ends — adds contrast and true white.</li>
+      <li>Then use <strong>Image → Adjustments → Curves ( Ctrl/Cmd + M )</strong>.</li>
+      <li>Make a gentle “S” curve for subtle contrast — raise lights and anchor dark tones.</li>
+      <li>Keep paper white natural (not burnt out) and shadows soft.</li>
+    </ul>
+  </div>
+  <div class="tip">🎨 Levels recover brightness, Curves refine contrast — best to apply before colour balancing.</div>
+
+  <!-- STEP 4 -->
+  <h2 id="adjust">4️⃣ Adjust Light & Colour — Camera Raw Filter</h2>
   <div class="box">
     <ul>
       <li>Choose <strong>Filter → Camera Raw Filter…</strong></li>
       <li>Set White Balance = Custom.</li>
-      <li>Adjust with:
-        <ul>
-          <li><strong>Temperature:</strong> left = cool | right = warm</li>
-          <li><strong>Tint:</strong> left = green | right = magenta</li>
-        </ul>
-      </li>
+      <li>Tweak <strong>Temperature</strong> (left = cool | right = warm) and <strong>Tint</strong> (left = green | right = magenta).</li>
       <li>Aim for clean white paper — not over‑bright white.</li>
     </ul>
   </div>
 
-  <!-- Step 3 video -->
   <div class="video-container">
-    <iframe src="videos/camera-raw-video.mp4"
-            title="Video — Adjusting Light and Colour in Camera Raw Filter"
-            allowfullscreen></iframe>
+    <iframe src="videos/camera-raw-video.mp4" title="Video — Adjusting Light and Colour in Camera Raw Filter" allowfullscreen></iframe>
   </div>
 
   <div class="tip">🪄 Keep it simple: Temperature + Tint give natural colour balance — no eyedropper needed.</div>
 
-  <!-- Combined before-after image -->
   <div class="example">
-    <img src="images/sketch-before-after.jpg"
-         alt="Side‑by‑side comparison of before and after Photoshop correction"
-         class="example-direct-image">
+    <img src="images/sketch-before-after.jpg" class="example-direct-image"
+         alt="Side‑by‑side comparison of before and after Photoshop correction">
     <div class="banner-caption">Before (left) → After (right) · balanced tone & colour.</div>
   </div>
 
-  <!-- STEP 4 -->
-  <h2 id="layout">4️⃣ Place into A3 Layout</h2>
+  <!-- STEP 5 -->
+  <h2 id="layout">5️⃣ Place into A3 Layout</h2>
   <div class="box">
     <ul>
       <li>Select with <strong>Marquee Tool (M)</strong> → <kbd>Ctrl/Cmd + C</kbd> / <kbd>Ctrl/Cmd + V</kbd></li>
@@ -279,15 +285,12 @@ footer {
   </div>
   <div class="tip">🧩 No need to crop — keep the page whole and frame it later.</div>
 
-  <!-- Step 4 video -->
   <div class="video-container">
-    <iframe src="videos/layout-video.mp4"
-            title="Video — Placing pages into A3 Layout"
-            allowfullscreen></iframe>
+    <iframe src="videos/layout-video.mp4" title="Video — Placing pages into A3 Layout" allowfullscreen></iframe>
   </div>
 
-  <!-- STEP 5 -->
-  <h2 id="save">5️⃣ Save Clearly</h2>
+  <!-- STEP 6 -->
+  <h2 id="save">6️⃣ Save Clearly</h2>
   <div class="box">
     <ul>
       <li>File → Export → <strong>Save for Web (Legacy)</strong></li>
@@ -343,7 +346,7 @@ function showResult(){
  let feedback="";
  if(percent>=80)feedback="🌟 Excellent — great eye for colour and workflow!";
  else if(percent>=50)feedback="👍 Good job — review the unclear steps once more.";
- else feedback="💭 Keep practising these Photoshop steps and try again.";
+ else feedback="💭 Keep practising Levels, Curves and Colour balance — try again!";
  document.getElementById("game").innerHTML="";
  document.getElementById("result").innerHTML=`You scored <strong>${score}</strong>/<strong>${total}</strong> (${percent}%)<br>${feedback}`;
 }
