@@ -5,155 +5,391 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <title>Editing Sketchbook Photos & Scans in Photoshop · UAL Digital Studies</title>
 <style>
-  body {
-    font-family: "Courier New", monospace;
-    background: repeating-linear-gradient(
-      0deg,#ffffff,#ffffff 24px,#d7fdfd 25px,#d7fdfd 26px);
-    color:#111;
-    margin:0;
-    padding:2rem;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:100vh;
-  }
+/* ==== GLOBAL STYLING ==== */
+body {
+  margin:0;
+  font-family:"Andale Mono","Orator Std","Courier New",monospace;
+  background:
+    linear-gradient(#d7fdfd 1px,transparent 1px),
+    linear-gradient(90deg,#d7fdfd 1px,transparent 1px),
+    linear-gradient(#ffd6ec 2px,transparent 2px),
+    linear-gradient(90deg,#ffd6ec 2px,transparent 2px);
+  background-size:64px 64px,64px 64px,320px 320px,320px 320px;
+  background-attachment:fixed;
+  color:#111;
+  padding:0;
+}
 
-  .poster {
-    background:#fffdfd;
-    border:4px double #0a8080;
-    border-radius:8px;
-    padding:2rem 3rem;
-    max-width:880px;
-    width:100%;
-    box-shadow:0 0 18px rgba(0,0,0,0.08);
-  }
+/* ==== NAVIGATION ==== */
+nav.mini-nav {
+  background:#0a8080;
+  padding:0.6rem;
+  text-align:center;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+nav.mini-nav a {
+  color:#fff;
+  text-decoration:none;
+  margin:0 0.8rem;
+  font-weight:bold;
+  transition:color 0.2s ease;
+}
+nav.mini-nav a:hover{color:#ffd6ec;}
 
-  h1 {
-    text-align:center;
-    color:#0a8080;
-    font-size:1.9rem;
-    margin-bottom:1rem;
-  }
+/* ==== CONTAINER ==== */
+.container {
+  max-width:900px;
+  background:rgba(255,255,255,0.97);
+  border:4px double #0a8080;
+  border-radius:12px;
+  box-shadow:0 4px 20px rgba(0,0,0,0.08);
+  padding:2rem 3rem;
+  margin:2rem auto;
+}
 
-  h2 {
-    color:#ea37a3;
-    font-size:1.25rem;
-    margin-top:1.6rem;
-  }
+h1 {
+  text-align:center;
+  color:#0a8080;
+  font-size:1.9rem;
+  margin-bottom:1.4rem;
+  border-bottom:3px dotted #ea37a3;
+  padding-bottom:0.5rem;
+}
+h2 {
+  color:#0a8080;
+  font-size:1.4rem;
+  margin-top:2rem;
+}
+h3 {
+  color:#ea37a3;
+  font-size:1.1rem;
+  margin-top:1.2rem;
+}
+p,li {
+  line-height:1.6;
+  font-size:1rem;
+}
+ul {margin-left:1.3rem;}
+a {color:#0a8080;}
 
-  p, li {
-    line-height:1.6;
-    font-size:1rem;
-  }
+/* ==== BOX COMPONENTS ==== */
+.box {
+  border:1.5px solid #00b0b0;
+  border-radius:8px;
+  padding:1rem 1.25rem;
+  background:#f9ffff;
+  margin-top:0.8rem;
+}
+.tip {
+  border-left:4px solid #ea37a3;
+  background:#fff5fb;
+  padding:0.8rem 1rem;
+  border-radius:6px;
+  margin-top:1rem;
+  font-size:0.95rem;
+}
+.note {
+  border-left:4px solid #00b0b0;
+  background:#e5ffff;
+  padding:0.9rem 1rem;
+  border-radius:6px;
+  margin-top:1rem;
+  font-size:0.95rem;
+}
 
-  ul { margin-left:1.3rem; }
+/* ==== EXAMPLE IMAGE SECTION ==== */
+.before-after {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  margin:1.5rem 0;
+}
+.before-after figure {
+  flex:1;
+  text-align:center;
+}
+.before-after img {
+  width:100%;
+  height:auto;
+  border:2px solid #00b0b0;
+  border-radius:8px;
+  box-shadow:0 0 12px rgba(234,55,163,0.1);
+}
+.before-after figcaption {
+  font-size:0.85rem;
+  color:#555;
+  margin-top:0.3rem;
+}
+.fallback-demo {
+  display:none;
+  justify-content:center;
+  align-items:center;
+  gap:20px;
+  border:1.5px solid #00b0b0;
+  border-radius:8px;
+  padding:1rem;
+  background:#f9ffff;
+  font-size:0.9rem;
+  color:#0a8080;
+}
 
-  .tip {
-    background:#f3ffff;
-    border:2px solid #a0e0e0;
-    padding:1rem 1.25rem;
-    border-radius:6px;
-    margin-top:1rem;
-  }
+/* ==== VIDEO ==== */
+.video-container {
+  margin-top:1rem;
+  margin-bottom:1rem;
+  border:2px solid #00b0b0;
+  border-radius:8px;
+  overflow:hidden;
+  position:relative;
+  padding-bottom:56.25%;
+  height:0;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+.video-container iframe {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  border:0;
+}
 
-  .warn {
-    background:#fffde0;
-    border-left:5px solid #e7a600;
-    padding:1rem 1.25rem;
-    border-radius:6px;
-    margin-top:1rem;
-  }
+/* ==== QUIZ (GAME) SECTION ==== */
+.quiz-section {
+  margin-top:2.5rem;
+  padding:1.5rem;
+  border:2px solid #00b0b0;
+  border-radius:10px;
+  background:linear-gradient(135deg,#fff5fb,#f9ffff);
+}
+.quiz-title {
+  color:#0a8080;
+  font-size:1.3rem;
+  text-align:center;
+  border-bottom:2px dotted #ea37a3;
+  padding-bottom:0.5rem;
+  margin-bottom:1rem;
+}
+.question {
+  font-weight:bold;
+  color:#0a8080;
+  margin-bottom:1rem;
+  text-align:center;
+}
+.options {
+  display:flex;
+  flex-direction:column;
+  gap:0.6rem;
+  align-items:center;
+}
+.quiz-btn {
+  background:#00b0b0;
+  color:#fff;
+  border:none;
+  padding:0.6rem 1.2rem;
+  border-radius:6px;
+  font-family:inherit;
+  font-size:0.95rem;
+  cursor:pointer;
+  width:90%;
+  max-width:400px;
+  transition:background 0.25s ease;
+}
+.quiz-btn:hover {background:#0a8080;}
+#result {
+  text-align:center;
+  margin-top:1.5rem;
+  font-weight:bold;
+  color:#ea37a3;
+}
 
-  footer {
-    text-align:center;
-    font-size:0.9rem;
-    color:#555;
-    margin-top:2rem;
-  }
+/* ==== FOOTER ==== */
+footer {
+  text-align:center;
+  font-size:0.9rem;
+  color:#555;
+  margin-top:2rem;
+  border-top:2px dotted #ea37a3;
+  padding-top:0.8rem;
+}
 
-  @media(max-width:600px){
-    body{padding:1rem;}
-    .poster{padding:1.5rem;}
-    h1{font-size:1.5rem;}
-  }
+/* ==== RESPONSIVE ==== */
+@media(max-width:700px){
+  .container{padding:1.5rem;}
+  .before-after{flex-direction:column;}
+}
 </style>
 </head>
 <body>
-<div class="poster">
+
+<!-- NAVIGATION -->
+<nav class="mini-nav">
+  <a href="#capture">Capture</a>
+  <a href="#duplicate">Duplicate</a>
+  <a href="#adjust">Adjust</a>
+  <a href="#layout">Layout</a>
+  <a href="#save">Save</a>
+  <a href="#quiz">Game</a>
+</nav>
+
+<div class="container">
+
   <h1>Editing Photos & Scans of Physical Work in Photoshop 🖼️</h1>
 
-  <h2>1️⃣ Capture Your Sketchbook Work</h2>
+  <h2 id="capture">1️⃣ Capture Your Sketchbook Work</h2>
   <p>You can record physical pages two ways — both have benefits.</p>
 
-  <h3>✨ Option A: Scan at College</h3>
-  <ul>
-    <li>Use the <strong>college printers/scanners</strong> — place your page flat on the glass and close the lid gently.</li>
-    <li>Swipe your student card and choose <strong>Scan to Email</strong>.</li>
-    <li>Set resolution to <strong>300 dpi</strong> to keep detail sharp.</li>
-    <li>Watch for washed‑out paper; Pencil or light graphite may scan faintly.</li>
-    <li>Scanned files arrive in your inbox — download them to your drive or desktop.</li>
-  </ul>
-
-  <h3>📸 Option B: Photograph Your Pages</h3>
-  <ul>
-    <li>Use soft daylight (not direct sunlight or yellow bulbs).</li>
-    <li>Lay the sketchbook flat; stand or mount your phone above it.</li>
-    <li>Take several shots and pick the most evenly lit one.</li>
-    <li>Photos often capture surface texture that scanners miss.</li>
-  </ul>
-
-  <div class="tip">
-    💡 <strong>Best results:</strong> combine both approaches — scan for clarity + photograph for texture.
+  <div class="box">
+    <h3>✨ Option A — Scan at College</h3>
+    <ul>
+      <li>Use the college printers/scanners — place your page flat on the glass and close the lid gently.</li>
+      <li>Swipe your student card and choose <strong>Scan to Email</strong>.</li>
+      <li>Set resolution to <strong>300 dpi</strong> for sharp detail.</li>
+      <li>Watch for washed‑out paper; pencil may scan faintly.</li>
+    </ul>
   </div>
 
-  <h2>2️⃣ Open and Duplicate the Layer</h2>
-  <ul>
-    <li>Open the image in Photoshop.</li>
-    <li>In the Layers panel, drag the Background layer to the <strong>“New Layer”</strong> icon to make a copy.</li>
-    <li>This protects your original if you need to revert.</li>
-  </ul>
-
-  <h2>3️⃣ Adjust Light and Colour with the Camera Raw Filter</h2>
-  <ul>
-    <li>Go to <strong>Filter → Camera Raw Filter…</strong></li>
-    <li>Under the right‑hand <strong>Color</strong> section, change the White Balance menu to <strong>Custom</strong>.</li>
-    <li>Use the sliders to refine the paper tone:  
-      <ul>
-        <li><strong>Temperature:</strong> Left = cooler (blue) · Right = warmer (yellow)</li>
-        <li><strong>Tint:</strong> Left = green · Right = magenta</li>
-      </ul>
-    </li>
-    <li>Small adjustments are best — the goal is clean white paper, not brilliant white.</li>
-    <li>Click <strong>OK</strong> to apply and return to Photoshop.</li>
-  </ul>
-
-  <div class="tip">
-    🪄 <strong>Keep it simple:</strong> no eyedropper needed — just Temperature + Tint in the Camera Raw Filter for natural balance.
+  <div class="box">
+    <h3>📸 Option B — Photograph Your Pages</h3>
+    <ul>
+      <li>Use soft daylight (not direct sunlight).</li>
+      <li>Lay flat; stand or mount your phone above the page.</li>
+      <li>Take several shots and pick the most evenly lit one.</li>
+    </ul>
   </div>
 
-  <h2>4️⃣ Selecting or Placing into an A3 Layout</h2>
-  <ul>
-    <li>To move part of a page, choose the <strong>Rectangular Marquee Tool (M)</strong> → select → <kbd>Ctrl/Cmd + C</kbd> → paste into your new A3 document.</li>
-    <li>Or, in your A3 file, use <strong>File → Place Embedded …</strong> to insert the whole page as a flexible layer.</li>
-    <li>Resize or reposition with <kbd>Ctrl/Cmd + T</kbd> (Free Transform).</li>
-  </ul>
+  <div class="tip">💡 <strong>Best results:</strong> combine both approaches — scan for clarity + photograph for texture.</div>
 
-  <div class="tip">
-    🧩 <strong>No need to crop:</strong> keep full pages — you can frame or mask them later within your A3 compositions.
+  <!-- VIDEO DEMO PLACEHOLDER -->
+  <div class="video-container">
+    <iframe src="" title="Video demo — Capturing pages" allowfullscreen></iframe>
   </div>
 
-  <h2>5️⃣ Save Clearly</h2>
-  <ul>
-    <li>Go to <strong>File → Export → Save for Web (Legacy)</strong>.</li>
-    <li>Select <strong>JPEG High Quality (80–90%)</strong> for Moodle / Padlet uploads.</li>
-    <li>Rename your file clearly: <em>firstname_sketchbook_edit.jpg</em>.</li>
-    <li>Keep file size under 2 MB for easy sharing.</li>
-  </ul>
+  <h2 id="duplicate">2️⃣ Open & Duplicate Layers</h2>
+  <div class="box">
+    <ul>
+      <li>Open your image in Photoshop.</li>
+      <li>Drag the Background layer onto the <strong>New Layer</strong> icon.</li>
+      <li>This keeps a safe original beneath.</li>
+    </ul>
+  </div>
+
+  <h2 id="adjust">3️⃣ Adjust Light & Colour — Camera Raw Filter</h2>
+  <div class="box">
+    <ul>
+      <li>Filter → <strong>Camera Raw Filter…</strong></li>
+      <li>Set White Balance = Custom.</li>
+      <li>Use sliders:
+        <ul>
+          <li><strong>Temperature:</strong> left = cool, right = warm</li>
+          <li><strong>Tint:</strong> left = green, right = magenta</li>
+        </ul>
+      </li>
+      <li>Aim for clean white paper, not pure white.</li>
+    </ul>
+  </div>
+
+  <div class="tip">🪄 Keep it simple: Temperature + Tint give natural balance — no eyedropper needed.</div>
+
+  <div class="before-after">
+    <figure>
+      <img src="images/sketch-before.jpg" alt="Original unedited sketch photo" onerror="this.style.display='none';document.getElementById('fallback1').style.display='flex';">
+      <figcaption>Before — uneven lighting</figcaption>
+    </figure>
+    <figure>
+      <img src="images/sketch-after.jpg" alt="Edited sketch with Camera Raw filter" onerror="this.style.display='none';document.getElementById('fallback1').style.display='flex';">
+      <figcaption>After — balanced tone & colour</figcaption>
+    </figure>
+  </div>
+  <div id="fallback1" class="fallback-demo">
+    📷 Add before/after examples here.
+  </div>
+
+  <div class="video-container">
+    <iframe src="" title="Video demo — Adjusting colour in Camera Raw" allowfullscreen></iframe>
+  </div>
+
+  <h2 id="layout">4️⃣ Place into A3 Layout</h2>
+  <div class="box">
+    <ul>
+      <li>Select with <strong>Marquee Tool (M)</strong> → <kbd>Ctrl/Cmd + C</kbd> / <kbd>Ctrl/Cmd + V</kbd>.</li>
+      <li>Or File → <strong>Place Embedded…</strong> to insert your full page.</li>
+      <li>Resize via <kbd>Ctrl/Cmd + T</kbd> (Free Transform).</li>
+    </ul>
+  </div>
+
+  <div class="tip">🧩 No need to crop — keep the page whole and frame it later.</div>
+
+  <div class="video-container">
+    <iframe src="" title="Video demo — Placing in A3 layout" allowfullscreen></iframe>
+  </div>
+
+  <h2 id="save">5️⃣ Save Clearly</h2>
+  <div class="box">
+    <ul>
+      <li>File → Export → <strong>Save for Web (Legacy)</strong></li>
+      <li>Choose JPEG High Quality (80–90%) for Moodle / Padlet.</li>
+      <li>Name file <em>firstname_sketchbook_edit.jpg</em>.</li>
+      <li>Keep under 2 MB.</li>
+    </ul>
+  </div>
+
+  <div class="note">💾 Tip: Save a layered PSD copy for future editing.</div>
+
+  <!-- QUIZ GAME -->
+  <div id="quiz" class="quiz-section">
+    <h2 id="quiz" class="quiz-title">🎮 Knowledge Check — Editing Photos & Scans</h2>
+    <div id="game"></div>
+    <div id="result"></div>
+  </div>
 
   <footer>
-    💡 UAL Digital Studies · Photoshop Guide – Editing Physical & Scanned Work  
-    <br>Scan · Photograph · Refine · Present
+    💡 UAL Digital Studies · Photoshop Guide – Editing Physical & Scanned Work<br>
+    Scan · Photograph · Refine · Present<br><br>
+    📸 <a href="https://moodle.arts.ac.uk/" target="_blank">Return to Moodle / Padlet Upload</a>
   </footer>
 </div>
+
+<script>
+// ==== QUIZ GAME SCRIPT ====
+const quizData = [
+  {q:"Which capture method provides more consistent lighting?",opts:["Scanning","Photographing","Tracing","Drawing"],correct:0},
+  {q:"Where do you find the Camera Raw Filter?",opts:["Image → Adjustments","Filter → Camera Raw Filter…","View → Extras","Window → Layers"],correct:1},
+  {q:"Which two sliders correct paper colour?",opts:["Exposure & Contrast","Temperature & Tint","Hue & Saturation","Shadows & Blacks"],correct:1},
+  {q:"What key command resizes a placed image?",opts:["Ctrl/Cmd + E","Ctrl/Cmd + J","Ctrl/Cmd + T","Ctrl/Cmd + G"],correct:2},
+  {q:"Which file format keeps editable layers?",opts:["JPG","PNG","PSD","GIF"],correct:2},
+  {q:"What resolution is ideal for scanning sketchbook pages?",opts:["72 dpi","150 dpi","300 dpi","600 dpi"],correct:2}
+];
+let current=0,score=0;
+
+function loadQuestion(){
+  const q=quizData[current];
+  document.getElementById("game").innerHTML=`
+    <div class='question'>${q.q}</div>
+    <div class='options'>
+      ${q.opts.map((opt,i)=>`<button class='quiz-btn' onclick='checkAns(${i})'>${opt}</button>`).join('')}
+    </div>`;
+  document.getElementById("result").innerHTML="";
+}
+function checkAns(i){
+  if(i===quizData[current].correct)score++;
+  current++;
+  current<quizData.length?loadQuestion():showResult();
+}
+function showResult(){
+  const total=quizData.length;
+  const percent=Math.round((score/total)*100);
+  let feedback="";
+  if(percent>=80)feedback="🌟 Excellent — great eye for colour and workflow!";
+  else if(percent>=50)feedback="👍 Good job — review any unclear steps.";
+  else feedback="💭 Keep practising each tool and re‑try soon.";
+  document.getElementById("game").innerHTML="";
+  document.getElementById("result").innerHTML=`You scored <strong>${score}</strong>/<strong>${total}</strong> (${percent}%)<br>${feedback}`;
+}
+loadQuestion();
+</script>
 </body>
 </html>
